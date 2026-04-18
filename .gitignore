@@ -15,6 +15,9 @@ batch/tracker-additions/**/*.tsv
 jds/*
 !jds/.gitkeep
 
+# External reference repo (user's job-prep archive)
+job-prep/
+
 # User config and customization (never auto-updated)
 config/profile.yml
 portals.yml
