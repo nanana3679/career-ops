@@ -1,34 +1,13 @@
-# Personal data (user fills these)
-data/applications.md
-data/pipeline.md
-data/scan-history.tsv
-reports/*.md
-!reports/.gitkeep
-output/*
-!output/.gitkeep
-batch/logs/*
-!batch/logs/.gitkeep
-batch/batch-state.tsv
-batch/batch-input.tsv
-batch/tracker-additions/**/*.tsv
-!batch/tracker-additions/.gitkeep
-jds/*
-!jds/.gitkeep
-
-# External reference repo (user's job-prep archive)
+# Nested git repo (user's job-prep archive — keep as separate repo)
 job-prep/
 
-# User config and customization (never auto-updated)
-config/profile.yml
-portals.yml
-modes/_profile.md
-.update-dismissed
-.update-lock
-
-# Generated
+# Generated / ephemeral
 .resolved-prompt-*
 node_modules/
 bun.lock
+package-lock.json
+.update-dismissed
+.update-lock
 
 # OS
 .DS_Store
@@ -39,4 +18,6 @@ bun.lock
 .claude/settings.local.json
 .claude/memory/
 career-dashboard
-package-lock.json
+
+# Keep .gitkeep files
+!**/.gitkeep
