@@ -1,6 +1,6 @@
 # Article Digest — Proof Points
 
-평가 시 인용 가능한 검증된 경험 포인트. 원본은 `job-prep/*-experience.md`, `job-prep/self-reflection.md`.
+평가 시 인용 가능한 검증된 경험 포인트. 더 상세한 기술 설계는 `docs/hada-design.md`, `docs/portfolio-plan.md` 참조.
 
 ---
 
@@ -152,14 +152,10 @@
 
 ---
 
-## 📍 출처
+## 📍 관련 참조
 
-- `job-prep/hada-experience.md`
-- `job-prep/modelhouse-experience.md`
-- `job-prep/wordle-decks-experience.md`
-- `job-prep/not4k-experience.md`
-- `job-prep/self-reflection.md`
-- `job-prep/portfolio-plan.md`
-- `job-prep/interview-cards.md`
-
-원본 수정 시 이 파일을 재생성할 것.
+- 더 상세한 기술 설계: `docs/hada-design.md` (hada SRS 설계서, 515줄)
+- 포트폴리오 계획: `docs/portfolio-plan.md` (hada-reboot, Wordle Phase 2)
+- 면접 Q&A 세부: `interview-prep/cards.md` (기업별 Q&A)
+- 면접 STAR+R 스토리: `interview-prep/story-bank.md`
+- 자소서 전략: `cover-letters/strategy.md` (필살기 / 구루의 언어 / 3C4P / 두괄식)

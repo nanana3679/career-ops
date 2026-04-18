@@ -1,6 +1,3 @@
-# Nested git repo (user's job-prep archive — keep as separate repo)
-job-prep/
-
 # Generated / ephemeral
 .resolved-prompt-*
 node_modules/

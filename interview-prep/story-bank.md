@@ -1,6 +1,6 @@
 # Story Bank — Master STAR+R Stories
 
-job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재가공한 핵심 스토리. 평가(Block F)마다 새 스토리가 추가됨.
+`article-digest.md`와 `interview-prep/cards.md`를 STAR+R 형식으로 재가공한 핵심 스토리. 평가(Block F)마다 새 스토리가 추가됨.
 
 ---
 
@@ -8,7 +8,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [설계 역량] 결정적 셔플로 4가지 파생 문제 해결 (hada)
 
-**Source:** job-prep/hada-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #1 — 결정적 셔플), interview-prep/cards.md (hada 섹션)
 
 **S (Situation):** 외국인 대상 한국어 단어 암기 앱 hada. Anki 스타일 SRS 시스템이지만, 팀원들이 독립적으로 발견한 네 가지 문제가 있었음 — 새로고침 시 진행률 소실, 학습량 조절 시 이미 본 카드 섞임, prefetch 대상 특정 불가, 서버가 매번 순서를 내려줘야 함.
 
@@ -26,7 +26,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [문제 해결 / 자동화] 계약서 관리 자동 추적 체계 (모델하우스)
 
-**Source:** job-prep/modelhouse-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #2), interview-prep/cards.md
 
 **S (Situation):** 모델하우스에서 계약서는 작성→스캔→ERP 업로드→등기소 발송→확정일자 수령→보관의 단계를 거침. 영업사원이 많아지면서 계약서가 섞여 어떤 게 어느 단계인지 실물 박스를 뒤져야 파악 가능 (약 30분 소요).
 
@@ -44,7 +44,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [장애 대응] 오픈 첫날 150건 실시간 처리 실패 (모델하우스)
 
-**Source:** job-prep/modelhouse-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #2), interview-prep/cards.md
 
 **S (Situation):** 모델하우스 오픈 첫날, 처음 해보는 업무로 상담 150건을 실시간 처리. 통계가 전부 틀어졌고 팀장이 숫자 조작까지 지시하는 상황.
 
@@ -62,7 +62,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [협업] 문법 데이터 포함 여부 의견 충돌 (hada)
 
-**Source:** job-prep/hada-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #1), interview-prep/cards.md
 
 **S (Situation):** 팀원과 학습 데이터에 문법 요소를 포함할지 논쟁. 나는 "문법 학습은 암기가 선행되어야 한다"는 입장, 팀원은 "문법은 외우는 걸로 도움이 안 된다"는 입장.
 
@@ -80,7 +80,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [회고 / 자기객관화] 과도한 추상화와 정규화 판단 오류 (hada)
 
-**Source:** job-prep/hada-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #1), interview-prep/cards.md
 
 **S (Situation):** hada 프로젝트에서 두 가지 설계 실수 — (1) auth 관련 서비스를 axios/http/쿠키/auth 4단계 클래스로 분리. (2) 카드 상세정보를 20개 국가별 번역 때문에 정규화하여 조인 비용 발생 → prefetch 구현.
 
@@ -98,7 +98,7 @@ job-prep의 `interview-cards.md`와 `*-experience.md`를 STAR+R 형식으로 재
 
 ### [플랫폼 설계] 콜드 스타트 & AI 부트스트래핑 (Wordle Decks)
 
-**Source:** job-prep/wordle-decks-experience.md, interview-cards.md
+**Source:** article-digest.md (필살기 #3 — Wordle Decks), interview-prep/cards.md (Wordle 섹션)
 
 **S (Situation):** 개인 프로젝트로 Wordle 덱 공유 플랫폼 배포. 플랫폼 3조건(전파/생산/소비)에 맞는 주제로 Wordle 선정. 그러나 배포 후 컨텐츠 부족과 튜토리얼 부재로 사용자 유입 실패.
 

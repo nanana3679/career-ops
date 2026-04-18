@@ -2,8 +2,8 @@
 
 <!-- ============================================================
      이 파일은 사용자 전용. 시스템 업데이트에 덮어써지지 않음.
-     job-prep 레포(github.com/nanana3679/job-prep)의 내용을
-     career-ops 파이프라인용으로 매핑한 파일.
+     job-prep 레포의 내용을 career-ops 파이프라인용으로
+     통합 완료. 모든 자소서 워크플로와 레퍼런스는 career-ops 내부에 있음.
      ============================================================ -->
 
 ## 사용자 컨텍스트 (CRITICAL)
@@ -33,11 +33,11 @@
 
 | Archetype | 우선순위 | 평가 기준 | Resume 버전 |
 |-----------|---------|----------|-------------|
-| **프론트엔드 개발자 (신입)** | primary | React/Next.js/TypeScript 매칭도, 신입 가능 여부, 성장 경로 | `job-prep/resumes/resume-frontend.md` |
-| **풀스택 (프론트 중심)** | secondary | Next.js + Supabase 매칭, 서버리스 경험 활용도 | `job-prep/resumes/resume-frontend.md` |
-| **비IT 기업 전산직** | adjacent (생계) | 안정성, 엑셀/ERP/자동화 매칭도 | `job-prep/resumes/resume-it-admin.md` |
+| **프론트엔드 개발자 (신입)** | primary | React/Next.js/TypeScript 매칭도, 신입 가능 여부, 성장 경로 | `cv.md` |
+| **풀스택 (프론트 중심)** | secondary | Next.js + Supabase 매칭, 서버리스 경험 활용도 | `cv.md` |
+| **비IT 기업 전산직** | adjacent (생계) | 안정성, 엑셀/ERP/자동화 매칭도 | `cv-alternate/it-admin.md` |
 | **네트워크/보안 SE** | adjacent (조건부) | 정보통신기사 활용, 2026.05.09 결과 이후 검토 | TODO |
-| **웹퍼블리셔** | 비추천 | HTML/CSS는 AI 대체 영역, 장기 전망 불확실 | `job-prep/resumes/resume-web-publisher.md` |
+| **웹퍼블리셔** | 비추천 | HTML/CSS는 AI 대체 영역, 장기 전망 불확실 | `cv-alternate/web-publisher.md` |
 
 ---
 
@@ -93,7 +93,7 @@
 **career-ops의 기본 apply 모드는 "폼 1회 생성" 중심. 사용자는 반드시 아래 단계를 따를 것**:
 
 ### 1. 공고 분석
-- `reports/`에 저장 + `job-prep/job-wiki/postings/` 스타일 참고
+- `reports/`에 저장. 과거 공고 분석 스타일은 `docs/past-postings/` 참고
 - 표면 요구사항 / 진짜 핵심 / 신입 진입 난이도 / 경험 매칭 3가지 추출
 
 ### 2. 자소서 방향 제시 (초안 아님)
@@ -103,17 +103,17 @@
 
 ### 3. 초안 작성
 - 사용자가 방향을 선택한 후
-- `job-prep/.claude/agents/cover-letter.md` 스타일 참조
-- `job-prep/cover-letters/*.md`의 톤/구조 참조 (CJ물류, GS, 한화ICT, 현대오토에버, LIG 사례)
+- `/cover-letter` 스킬 실행 (`.claude/skills/cover-letter/SKILL.md`의 8단계 워크플로)
+- `cover-letters/*.md`의 톤/구조 참조 (CJ물류, GS, 한화ICT, 현대오토에버, LIG 사례)
 
 ### 4. 면접관 에이전트 리뷰 (필수)
-자소서 작성/수정 후 반드시 진행:
+자소서 작성/수정 후 반드시 진행. `/cover-letter review` 실행 (`.claude/skills/cover-letter/review.md`):
 - 첫인상 + 항목별 강약점 + 떡밥/과잉증명 판단
 - 필살기 분석 (면접 질문을 유도하는가?)
 - 예상 면접 질문 리스트 (면접관 의도 + 답변 방향 + 필수 키워드)
 - 구체적 수정 제안
 
-### 자소서 원칙 (job-prep 철학)
+### 자소서 원칙 (`cover-letters/strategy.md` 반영)
 - 자소서는 면접 유도 도구. 모든 걸 증명하지 않음
 - 필살기 / 빌살기 / 밉살기 프레임워크
 - 두괄식 = 면접 주도권 확보
@@ -153,3 +153,4 @@
 ## 업데이트 로그
 
 - 2026-04-18: job-prep 레포 기반 초기 생성. cv.md, article-digest.md, profile.yml 동기화.
+- 2026-04-18: job-prep 완전 마이그레이션. `.claude/skills/cover-letter/`, `cover-letters/`, `cv-alternate/`, `interview-prep/{cards,strategy,prep}.md`, `docs/{hada-design,portfolio-plan,job-postings-2026-03}.md` 추가. job-prep 디렉토리 삭제.
