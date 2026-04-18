@@ -1,26 +1,119 @@
 # Story Bank — Master STAR+R Stories
 
-This file accumulates your best interview stories over time. Each evaluation (Block F) adds new stories here. Instead of memorizing 100 answers, maintain 5-10 deep stories that you can bend to answer almost any behavioral question.
+`article-digest.md`와 `interview-prep/cards.md`를 STAR+R 형식으로 재가공한 핵심 스토리. 평가(Block F)마다 새 스토리가 추가됨.
 
-## How it works
+---
 
-1. Every time `/career-ops oferta` generates Block F (Interview Plan), new STAR+R stories get appended here
-2. Before your next interview, review this file — your stories are already organized by theme
-3. The "Big Three" questions can be answered with stories from this bank:
-   - "Tell me about yourself" → combine 2-3 stories into a narrative
-   - "Tell me about your most impactful project" → pick your highest-impact story
-   - "Tell me about a conflict you resolved" → find a story with a Reflection
+## 🎯 핵심 스토리 (시드)
 
-## Stories
+### [설계 역량] 결정적 셔플로 4가지 파생 문제 해결 (hada)
 
-<!-- Stories will be added here as you evaluate offers -->
-<!-- Format:
-### [Theme] Story Title
-**Source:** Report #NNN — Company — Role
-**S (Situation):** ...
-**T (Task):** ...
-**A (Action):** ...
-**R (Result):** ...
-**Reflection:** What I learned / what I'd do differently
-**Best for questions about:** [list of question types this story answers]
--->
+**Source:** article-digest.md (필살기 #1 — 결정적 셔플), interview-prep/cards.md (hada 섹션)
+
+**S (Situation):** 외국인 대상 한국어 단어 암기 앱 hada. Anki 스타일 SRS 시스템이지만, 팀원들이 독립적으로 발견한 네 가지 문제가 있었음 — 새로고침 시 진행률 소실, 학습량 조절 시 이미 본 카드 섞임, prefetch 대상 특정 불가, 서버가 매번 순서를 내려줘야 함.
+
+**T (Task):** 네 가지 문제를 개별로 해결할지, 공통 원인을 찾을지 판단. 프론트엔드 기획+설계 담당이었음.
+
+**A (Action):** 각 문제를 추적해보니 모두 "순서가 비결정적"이라는 단일 근본 원인에 수렴. 결정적 셔플(날짜+사용자ID seed + Fisher-Yates)을 설계하여 같은 날·같은 학습 상태에서 항상 같은 순서를 보장. 추가로 "하루 기준 시각" 변경 시 시간여행이 발생할 수 있음을 발견 → 설정 변경을 다음 날부터 적용하는 방어적 설계 추가.
+
+**R (Result):** 하나의 설계로 네 문제 동시 해결. 서버가 학습 상태를 유지할 필요가 없어 서버리스 전환 가능성 확보. Anki는 즉시 적용 방식으로 스케줄링 꼬임 문제가 커뮤니티에서 보고되고 있었는데, hada는 원천 차단.
+
+**Reflection:** 다만 Anki 오픈소스를 사전에 참고했으면 시행착오를 줄일 수 있었음. 이후 서버리스 재구축(hada-reboot) 진행 중.
+
+**Best for questions about:** 구조적 사고, 근본 원인 분석, 엣지케이스 대응, 설계 트레이드오프
+
+---
+
+### [문제 해결 / 자동화] 계약서 관리 자동 추적 체계 (모델하우스)
+
+**Source:** article-digest.md (필살기 #2), interview-prep/cards.md
+
+**S (Situation):** 모델하우스에서 계약서는 작성→스캔→ERP 업로드→등기소 발송→확정일자 수령→보관의 단계를 거침. 영업사원이 많아지면서 계약서가 섞여 어떤 게 어느 단계인지 실물 박스를 뒤져야 파악 가능 (약 30분 소요).
+
+**T (Task):** 관리자가 수기 날짜 기록을 지시했으나, 바쁜 상황에 누락이 생길 수밖에 없다고 판단. 알바 신분으로 대안을 제시해야 함.
+
+**A (Action):** 지시를 거부하지 않고 수행하면서 동시에 대안을 준비. 추적 불가능한 항목(ERP 업로드일)을 추적 가능한 항목(스캔일=파일 생성일)으로 교체 제안. 파일명 규칙 `동호수-계약서(미비)` 통일, 엑셀 매크로로 폴더 내 파일명을 파싱하여 상태 자동 산출, ERP 계약자 리스트와 비교하여 누락 자동 감지. 이미 동작하는 결과물로 제안.
+
+**R (Result):** 상태 파악 시간 30분 → 클릭 몇 번. 누락 자동 감지 가능.
+
+**Reflection:** "수기 관리는 작업 레이어만 추가된 것이지 문제가 해결된 게 아님 — 문제가 발생하는 지점이 옮겨졌을 뿐"이라는 관점. 이후 hada의 과도한 추상화도 같은 패턴으로 회고함.
+
+**Best for questions about:** 장애/문제 대응, 프로세스 개선, 상위자 설득, 엔터프라이즈 시스템 이해, 자동화 판단 기준
+
+---
+
+### [장애 대응] 오픈 첫날 150건 실시간 처리 실패 (모델하우스)
+
+**Source:** article-digest.md (필살기 #2), interview-prep/cards.md
+
+**S (Situation):** 모델하우스 오픈 첫날, 처음 해보는 업무로 상담 150건을 실시간 처리. 통계가 전부 틀어졌고 팀장이 숫자 조작까지 지시하는 상황.
+
+**T (Task):** 당일 수습과 재발 방지. 알바 신분에서 신뢰 회복.
+
+**A (Action):** (1) 혼자 감당 불가 인지 → 즉시 인력 지원 요청 (에스컬레이션). (2) 당일은 최선으로 대응. (3) 다음 날 근본 원인 분석 — 입력과 통계가 하나의 작업에 혼재 → 실수가 통계까지 오염되는 구조. 단일진실공급원 표 + 통계 함수 분리, fast fail 오류 가시화, 손 카운트 교차검증 도입.
+
+**R (Result):** 실수 하루 0~1건으로 감소. 이후 "신뢰받고 오래 일하는 사람"으로 평가받아 다른 현장 사무직도 소개받음.
+
+**Reflection:** 감지→대응→재발방지 3단계를 현장에서 체험. "150건을 수기로 처음 하면 누구든 틀리는 구조" — 사람 탓이 아니라 구조의 문제로 프레이밍한 것이 빠른 회복의 이유.
+
+**Best for questions about:** 장애 대응, 에스컬레이션, 멘탈 관리, 근본 원인 분석, 책임감
+
+---
+
+### [협업] 문법 데이터 포함 여부 의견 충돌 (hada)
+
+**Source:** article-digest.md (필살기 #1), interview-prep/cards.md
+
+**S (Situation):** 팀원과 학습 데이터에 문법 요소를 포함할지 논쟁. 나는 "문법 학습은 암기가 선행되어야 한다"는 입장, 팀원은 "문법은 외우는 걸로 도움이 안 된다"는 입장.
+
+**T (Task):** 기획자이자 프론트 담당으로서 의사결정. 개인 선호가 아닌 근거 기반으로 결정.
+
+**A (Action):** 바로 결론 내지 않고 서로 근거를 더 찾아올 시간 확보. 재토론 후에도 합의가 안 돼서 주변 한국어 학습자들에게 직접 조사. 실사용자 피드백을 근거로 안 넣는 걸로 결정.
+
+**R (Result):** 내 의견 기각. 팀원 방향으로 결정.
+
+**Reflection:** 실사용자 근거라 납득함. 의견 충돌 시 "근거를 비교 → 결론 안 나면 추가 근거 확보 → 필요하면 외부 피드백"이라는 프로세스가 작동함을 확인.
+
+**Best for questions about:** 협업, 의견 충돌, 사용자 중심 의사결정, 조직 내 커뮤니케이션
+
+---
+
+### [회고 / 자기객관화] 과도한 추상화와 정규화 판단 오류 (hada)
+
+**Source:** article-digest.md (필살기 #1), interview-prep/cards.md
+
+**S (Situation):** hada 프로젝트에서 두 가지 설계 실수 — (1) auth 관련 서비스를 axios/http/쿠키/auth 4단계 클래스로 분리. (2) 카드 상세정보를 20개 국가별 번역 때문에 정규화하여 조인 비용 발생 → prefetch 구현.
+
+**T (Task):** 배포 후 회고를 통해 본인의 설계 습관을 분석.
+
+**A (Action):** 두 사례 모두 "문제를 해결하는 것처럼 보이지만 실제로는 복잡도만 높인" 패턴으로 묶어서 분석. 모델하우스에서 수기 관리에 대해 "작업 레이어만 추가된 것"이라 판단했던 것과 같은 구조임을 발견.
+
+**R (Result):** hada-reboot 포트폴리오 계획에서 비정규화 설계 + 단순 구조 방향으로 반영.
+
+**Reflection:** 추상화 레이어를 쌓는 것 자체가 목적이 되면 안 됨. "선행 사례(Anki)를 먼저 분석했어야 한다"는 교훈도 같이 정리.
+
+**Best for questions about:** 자기객관화, 오버엔지니어링, 회고 능력, 실패로부터의 학습
+
+---
+
+### [플랫폼 설계] 콜드 스타트 & AI 부트스트래핑 (Wordle Decks)
+
+**Source:** article-digest.md (필살기 #3 — Wordle Decks), interview-prep/cards.md (Wordle 섹션)
+
+**S (Situation):** 개인 프로젝트로 Wordle 덱 공유 플랫폼 배포. 플랫폼 3조건(전파/생산/소비)에 맞는 주제로 Wordle 선정. 그러나 배포 후 컨텐츠 부족과 튜토리얼 부재로 사용자 유입 실패.
+
+**T (Task):** 콜드 스타트를 해결하는 현실적 전략 수립.
+
+**A (Action):** (1) 텍스트 기반 UGC라는 특성을 AI 부트스트래핑 기회로 재해석 → AI 에이전트로 카테고리별 덱 대량 생성 계획. (2) 불특정 다수 홍보 실패 → IP 기반 팬 커뮤니티 타겟 홍보로 전략 전환 (게임/애니 IP 덱을 해당 커뮤니티에 공유). (3) 튜토리얼 추가 계획.
+
+**R (Result):** Phase 2 진행 중. 콜드 스타트 문제에 대한 재현 가능한 전략 프레임워크 확보.
+
+**Reflection:** "사용자의 사전 지식을 가정하지 말라"를 UX 원칙으로 체득. 관심사 명확한 집단 타겟이 전환율에 결정적이라는 판단.
+
+**Best for questions about:** 플랫폼/커뮤니티 설계, 콜드 스타트, AI 활용, 홍보 전략, 가설 검증
+
+---
+
+## 추가될 스토리
+
+<!-- 평가 리포트 Block F에서 생성된 스토리들이 여기 추가됨 -->
