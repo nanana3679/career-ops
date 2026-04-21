@@ -111,8 +111,8 @@ if (badStatuses === 0) ok('All statuses are canonical');
 const companyRoleMap = new Map();
 let dupes = 0;
 for (const e of entries) {
-  const key = e.company.toLowerCase().replace(/[^a-z0-9]/g, '') + '::' +
-    e.role.toLowerCase().replace(/[^a-z0-9 ]/g, '');
+  const key = e.company.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '') + '::' +
+    e.role.toLowerCase().replace(/[^\p{L}\p{N} ]/gu, '');
   if (!companyRoleMap.has(key)) companyRoleMap.set(key, []);
   companyRoleMap.get(key).push(e);
 }
