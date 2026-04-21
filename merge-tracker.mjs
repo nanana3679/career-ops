@@ -68,7 +68,7 @@ function validateStatus(status) {
 }
 
 function normalizeCompany(name) {
-  return name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return name.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 }
 
 function roleFuzzyMatch(a, b) {
