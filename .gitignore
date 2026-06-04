@@ -16,5 +16,10 @@ package-lock.json
 .claude/memory/
 career-dashboard
 
+# graphify (LLM wiki) — keep graph.json/report/html, drop ephemeral cache & cost
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/memory/
+
 # Keep .gitkeep files
 !**/.gitkeep
